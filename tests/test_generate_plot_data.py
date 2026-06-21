@@ -1,4 +1,4 @@
-from calculator import generate_plot_data
+from src.diego_m_calculator_pkg.calculator import generate_plot_data
 import numpy as np
 
 # test the generate_plot_data function

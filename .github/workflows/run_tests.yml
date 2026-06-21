@@ -28,4 +28,4 @@ jobs:
     # 6. Run your tests exactly how you do on your local Mac terminal!
     - name: Run Pytest
       run: |
-        pytest --cov=calculator --cov-fail-under=80-v
+        pytest --cov=calculator --cov-fail-under=80 -v

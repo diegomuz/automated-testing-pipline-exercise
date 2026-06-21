@@ -43,7 +43,7 @@ jobs:
     # 8. Run tests
     - name: Run Pytest
       run: |
-        pytest --cov=calculator --cov-fail-under=80 --cov-report=html -v
+        pytest --cov=src.diego_m_calculator_pkg.calculator --cov-fail-under=80 --cov-report=html -v
     
     # 9. Upload HTML coverage report as an artifact
     - name: Upload HTML Coverage Report Artifact

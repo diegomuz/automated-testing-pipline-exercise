@@ -1,0 +1,25 @@
+# i got this from gemini and https://packaging.python.org/en/latest/tutorials/packaging-projects/
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "diego-m-calculator"  # <-- What people will type for 'pip install'
+version = "0.1.0"
+authors = [
+  { name="Diego Muzzarelli" },
+]
+description = "calculator that lets you type in a mathematical equation and graphs it"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+
+[project.optional-dependencies]
+test = ["pytest", "pytest-cov"]
+
+[tool.setuptools.packages.find]
+where = ["src"]  # Tells setuptools to automatically look inside the 'src' folder

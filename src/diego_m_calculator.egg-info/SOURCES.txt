@@ -1,0 +1,12 @@
+LICENSE
+README.md
+pyproject.toml
+src/diego_m_calculator.egg-info/PKG-INFO
+src/diego_m_calculator.egg-info/SOURCES.txt
+src/diego_m_calculator.egg-info/dependency_links.txt
+src/diego_m_calculator.egg-info/requires.txt
+src/diego_m_calculator.egg-info/top_level.txt
+src/diego_m_calculator_pkg/__init__.py
+src/diego_m_calculator_pkg/calculator.py
+tests/test_generate_plot_data.py
+tests/test_handle_special_notations.py

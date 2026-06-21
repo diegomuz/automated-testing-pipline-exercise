@@ -53,4 +53,20 @@ jobs:
         name: python-coverage-report-${{ matrix.python-version }}
         path: htmlcov/
 
+    # 10. Compile the package ONLY on Python 3.14
+    - name: Build package distributions
+      if: matrix.python-version == '3.14'  
+      run: |
+        pip install build
+        python -m build
+
+    # 11. Upload the artifact ONLY on Python 3.14
+    - name: Upload Built Package Artifact
+      if: matrix.python-version == '3.14' 
+      uses: actions/upload-artifact@v4
+      with:
+        name: python-package-distributions  
+        path: dist/
+        retention-days: 5
+
 

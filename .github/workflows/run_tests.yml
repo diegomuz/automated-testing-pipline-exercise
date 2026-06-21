@@ -1,31 +1,31 @@
 name: Python Testing Pipeline
 
-# 1. Trigger the workflow on every git push to any branch
+#Trigger the workflow on every git push to any branch
 on: [push]
 
 jobs:
   run-pytest:
-    # 2. Tell GitHub to spin up a fresh Ubuntu Linux virtual machine
+    # Tell GitHub to start a fresh Ubuntu Linux virtual machine
     runs-on: ubuntu-latest
 
-    # 3. set up the python versions to be used
+    # set up the python versions to be used
     strategy:
       matrix:
     
         python-version: ['3.10', '3.11', '3.12', '3.13', '3.14']
 
     steps:
-    # 4. Download (checkout) repository code onto the virtual machine
+    # Download (checkout) repository code onto the virtual machine
     - name: Check out repository code
       uses: actions/checkout@v4
 
-    # 5. Install Python 3 and higher on the virtual machine
+    # Install Python 3 and higher on the virtual machine
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
         python-version: ${{matrix.python-version}}
 
-    # 6. cache libraries to not have to install them every time the workflow runs
+    # cache libraries to not have to install them every time the workflow runs
     - name: Cache pip
       uses: actions/cache@v4
       with:
@@ -34,33 +34,33 @@ jobs:
       
     
 
-    # 7. Install imported libraries (SymPy, NumPy, Matplotlib, Pytest)
+    # Install imported libraries (SymPy, NumPy, Matplotlib, Pytest)
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install pytest pytest-cov numpy sympy matplotlib 
 
-    # 8. Run tests
+    # Run tests
     - name: Run Pytest
       run: |
         pytest --cov=src.diego_m_calculator_pkg.calculator --cov-fail-under=80 --cov-report=html -v
     
-    # 9. Upload HTML coverage report as an artifact
+    # Upload HTML coverage report as an artifact
     - name: Upload HTML Coverage Report Artifact
       uses: actions/upload-artifact@v4
-      if: always()  # <-- This forces the upload even if the previous test step fails!
+      if: always() 
       with:
         name: python-coverage-report-${{ matrix.python-version }}
         path: htmlcov/
 
-    # 10. Compile the package ONLY on Python 3.14
+    # Compile the package on Python 3.14
     - name: Build package distributions
       if: matrix.python-version == '3.14'  
       run: |
         pip install build
         python -m build
 
-    # 11. Upload the artifact ONLY on Python 3.14
+    # Upload the artifact Python 3.14
     - name: Upload Built Package Artifact
       if: matrix.python-version == '3.14' 
       uses: actions/upload-artifact@v4

@@ -33,4 +33,12 @@ jobs:
     # 7. Run tests
     - name: Run Pytest
       run: |
-        pytest --cov=calculator --cov-fail-under=80 -v
+        pytest --cov=calculator --cov-fail-under=80 --cov-report=html -v
+    
+    # 8. Upload HTML coverage report as an artifact
+    - name: Upload HTML Coverage Report Artifact
+      uses: actions/upload-artifact@v4
+      if: always()  # <-- This forces the upload even if the previous test step fails!
+      with:
+        name: python-coverage-report
+        path: htmlcov/

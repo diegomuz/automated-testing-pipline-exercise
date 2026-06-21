@@ -8,24 +8,29 @@ jobs:
     # 2. Tell GitHub to spin up a fresh Ubuntu Linux virtual machine
     runs-on: ubuntu-latest
 
+    # 3. set up the python versions to be used
+    strategy:
+      matrix:
+    
+        python-version: ['3.10', '3.11', '3.12', '3.13', '3.14']
+
     steps:
-    # 3. Download (checkout) repository code onto the virtual machine
+    # 4. Download (checkout) repository code onto the virtual machine
     - name: Check out repository code
       uses: actions/checkout@v4
 
-    # 4. Install Python 3 and higher on the virtual machine
+    # 5. Install Python 3 and higher on the virtual machine
     - name: Set up Python
       uses: actions/setup-python@v5
-      with:
-        python-version: '3.x'
+      
 
-    # 5. Install imported libraries (SymPy, NumPy, Matplotlib, Pytest)
+    # 6. Install imported libraries (SymPy, NumPy, Matplotlib, Pytest)
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install pytest pytest-cov numpy sympy matplotlib 
 
-    # 6. Run tests
+    # 7. Run tests
     - name: Run Pytest
       run: |
         pytest --cov=calculator --cov-fail-under=80 -v

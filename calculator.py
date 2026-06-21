@@ -5,6 +5,7 @@ import numpy as np
 import sympy as sp
 import re
 
+
 def handle_special_notations(function:str):
     #replace ^ with ** for exponentiation
     function = function.replace('^','**')

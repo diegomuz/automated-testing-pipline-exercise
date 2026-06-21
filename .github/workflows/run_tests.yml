@@ -23,7 +23,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install pytest numpy sympy matplotlib
+        pip install pytest numpy sympy matplotlib re
 
     # 6. Run your tests exactly how you do on your local Mac terminal!
     - name: Run Pytest

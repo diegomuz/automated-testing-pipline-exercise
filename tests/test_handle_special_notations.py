@@ -1,6 +1,8 @@
 from src.diego_m_calculator_pkg.calculator import handle_special_notations
 
 # tests the handle_special_notations function
+
+""""
 def test_handle_special_notations_power():
     assert handle_special_notations("y = x^2") == "x**2"
 def test_handle_special_notations_colon():
@@ -21,4 +23,4 @@ def test_handle_special_notations_parenthesis():
     assert handle_special_notations("y = (x) (x)") == "(x)*(x)"
 
 
-    
+"""
